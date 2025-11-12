@@ -10,6 +10,8 @@
 //     },
 //   };
   
+
+
 //   function getUserInfo(user) {
 //     const {
 //       personalInfo: {
