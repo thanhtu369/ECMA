@@ -1,30 +1,12 @@
-import { useState } from 'react';
+import { Routes, Route } from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import About from "./pages/About";
 
-function App() {
-  const [count, setCount] = useState(0);
-
+export default function App() {
   return (
-    <div style={{ padding: '2rem', textAlign: 'center' }}>
-      <h1>Chào mừng đến với React + Vite!</h1>
-      <p>Ứng dụng React đầu tiên của bạn đã chạy thành công 🎉</p>
-      <div style={{ marginTop: '2rem' }}>
-        <button
-          onClick={() => setCount((count) => count + 1)}
-          style={{
-            padding: '0.5rem 1rem',
-            fontSize: '1rem',
-            cursor: 'pointer',
-            backgroundColor: '#646cff',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-          }}
-        >
-          Count: {count}
-        </button>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Homepage />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
   );
 }
-
-export default App;
