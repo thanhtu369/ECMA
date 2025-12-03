@@ -1,8 +1,26 @@
-import { Link, Outlet } from "react-router-dom";
-import { useState } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { authService } from "../services/authService";
+import toast from "react-hot-toast";
 
 const Layout = () => {
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const currentUser = authService.getUser();
+    setUser(currentUser);
+  }, []);
+
+  const handleLogout = () => {
+    authService.logout();
+    setUser(null);
+    toast.success("Đăng xuất thành công!");
+    navigate("/login");
+  };
+
+  const isAuthenticated = authService.isAuthenticated();
 
   return (
     <>
@@ -43,11 +61,24 @@ const Layout = () => {
 
           {/* MENU DESKTOP */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/">Trang chủ</Link>
-            <Link to="/list">Danh sách</Link>
-            <Link to="/add">Thêm mới</Link>
-            <Link to="/register">Đăng ký</Link>
-            <Link to="/login">Đăng nhập</Link>
+            {isAuthenticated ? (
+              <>
+                <Link to="/">Trang chủ</Link>
+                <Link to="/list">Danh sách</Link>
+                <Link to="/add">Thêm mới</Link>
+                {user && (
+                  <span className="text-sm">Xin chào, {user.email}</span>
+                )}
+                <button
+                  onClick={handleLogout}
+                  className="hover:underline cursor-pointer"
+                >
+                  Đăng xuất
+                </button>
+              </>
+            ) : (
+              <Link to="/login">Đăng nhập</Link>
+            )}
           </div>
         </div>
 
@@ -55,11 +86,37 @@ const Layout = () => {
         {open && (
           <div className="md:hidden bg-blue-700 border-t border-blue-500">
             <div className="px-4 py-3 space-y-2">
-              <Link onClick={() => setOpen(false)} to="/">Trang chủ</Link>
-              <Link onClick={() => setOpen(false)} to="/list">Danh sách</Link>
-              <Link onClick={() => setOpen(false)} to="/add">Thêm mới</Link>
-              <Link onClick={() => setOpen(false)} to="/register">Đăng ký</Link>
-              <Link onClick={() => setOpen(false)} to="/login">Đăng nhập</Link>
+              {isAuthenticated ? (
+                <>
+                  <Link onClick={() => setOpen(false)} to="/">
+                    Trang chủ
+                  </Link>
+                  <Link onClick={() => setOpen(false)} to="/list">
+                    Danh sách
+                  </Link>
+                  <Link onClick={() => setOpen(false)} to="/add">
+                    Thêm mới
+                  </Link>
+                  {user && (
+                    <div className="text-sm py-2">
+                      Xin chào, {user.email}
+                    </div>
+                  )}
+                  <button
+                    onClick={() => {
+                      setOpen(false);
+                      handleLogout();
+                    }}
+                    className="text-left w-full hover:underline"
+                  >
+                    Đăng xuất
+                  </button>
+                </>
+              ) : (
+                <Link onClick={() => setOpen(false)} to="/login">
+                  Đăng nhập
+                </Link>
+              )}
             </div>
           </div>
         )}

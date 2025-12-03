@@ -1,25 +1,23 @@
 {
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@test.com",
+      "password": "$2a$10$Yhot9Ix73aRt99MWHWiFhedU8y0A/07qt41fwhFKC/RcnU7UopDZ6",
+      "role": "user"
+    },
+    {
+      "id": "bfae",
+      "email": "tu@gmail.com",
+      "password": "$2a$10$B/OePEzsNdq3FSgEGkwmLegK6w.2jD2HBa23Zo68sbgudmAjHEJF2"
+    },
+    {
+      "id": "c907",
+      "email": "anhtu@gmail.com",
+      "password": "$2a$10$NzXIP90uS2.0hg4mdDzrE.zb/IpNysbERbbPoBPK8MEITxH4YMIaa"
+    }
+  ],
   "tours": [
-    {
-      "id": "3",
-      "name": "Đà Lạt 4N3D",
-      "destination": "Đà Lạt",
-      "duration": "4 ngày 3 đêm",
-      "price": 3200000,
-      "image": "https://picsum.photos/400/300?random=1",
-      "description": "Thành phố ngàn hoa với khí hậu mát mẻ quanh năm",
-      "available": 10
-    },
-    {
-      "id": "4",
-      "name": "Đà Lạt 4N3D",
-      "destination": "Đà Lạt",
-      "duration": "4 ngày 3 đêm",
-      "price": 3200000,
-      "image": "https://picsum.photos/400/300?random=2",
-      "description": "Thành phố ngàn hoa với khí hậu mát mẻ quanh năm",
-      "available": 10
-    },
     {
       "id": "5",
       "name": "Đà Lạt 4N3D",
@@ -28,7 +26,8 @@
       "price": 3200000,
       "image": "https://picsum.photos/400/300?random=3",
       "description": "Thành phố ngàn hoa với khí hậu mát mẻ quanh năm",
-      "available": 10
+      "available": 10,
+      "active": true
     },
     {
       "id": "a27a",
@@ -40,7 +39,7 @@
       "image": "https://www.didongmy.com/vnt_upload/product/09_2025/thumbs/(600x600)_iphone_17_pro_max_orange_thumb_didongmy.jpg",
       "description": "fdfdf",
       "category": "tour nội địa",
-      "active": true
+      "active": false
     },
     {
       "id": "c1c0",
@@ -53,6 +52,18 @@
       "description": "dffd",
       "category": "tour nội địa",
       "active": false
+    },
+    {
+      "name": "rêr",
+      "destination": "34343re",
+      "duration": "313214c",
+      "price": 3232323,
+      "available": 32,
+      "image": "https://picsum.photos/400/300?random=7",
+      "description": "sdsds",
+      "category": "tour quốc tế",
+      "active": false,
+      "id": "J6JPhjl"
     }
   ]
 }
